@@ -1,6 +1,6 @@
 import re
 
-def post_investment_response(message):
+def get_investment_response(message):
     message = message.lower()
 
     # --- Flexible spelling match for S.AG Private --- #

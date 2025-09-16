@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from chatbot.responses import post_investment_response
+from chatbot.responses import get_investment_response
 
 app = FastAPI()
 
