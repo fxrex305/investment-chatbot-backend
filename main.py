@@ -19,3 +19,7 @@ async def chat(request: Request):
     msg = data.get("message", "")
     response = get_investment_response(msg)
     return {"response": response}
+
+@app.get("/")
+def health():
+    return {"status": "ok"}
