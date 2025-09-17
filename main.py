@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from chatbot.responses import get_investment_response
+from chatbot.responses import post_investment_response
 
 app = FastAPI()
 
@@ -17,7 +17,7 @@ app.add_middleware(
 async def chat(request: Request):
     data = await request.json()
     msg = data.get("message", "")
-    response = get_investment_response(msg)
+    response = post_investment_response(msg)
     return {"response": response}
 
 @app.get("/")
