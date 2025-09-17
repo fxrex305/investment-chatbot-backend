@@ -1,6 +1,10 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from chatbot.responses import post_investment_response
+
+class Message(BaseModel):
+    message: str
 
 app = FastAPI()
 
@@ -14,10 +18,8 @@ app.add_middleware(
 )  #
 
 @app.post("/chat")
-async def chat(request: Request):
-    data = await request.json()
-    msg = data.get("message", "")
-    response = post_investment_response(msg)
+async def chat(msg: Message):
+    response = post_investment_response(msg.message)
     return {"response": response}
 
 @app.get("/")
